@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">RETRO MINES</string>
+    <string name="retro">RETRO</string>
+    <string name="minas">MINES</string>
+    <string name="jugar">PLAY</string>
+    <string name="configuracion">SETTINGS</string>
+    <string name="salir">QUIT</string>
+    <string name="volver">BACK</string>
+    <string name="cambiarVol">GENERAL SOUND</string>
+    <string name="cambiarEfe">SOUND EFFECTS</string>
+    <string name="cambiarMus">SOUND MUSIC</string>
+    <string name="selecciona">CHOOSE</string>
+    <string name="dificultad">DIFFICULTY</string>
+    <string name="principiante">BEGGINER</string>
+    <string name="medio">AVERAGE</string>
+    <string name="experto">EXPERT</string>
+    <string name="personalizado">CUSTOM</string>
+    <string name="reiniciar">Restart</string>
+    <string name="sonidoB">SOUND CONTROL</string>
+    <string name="ganado" >You win</string>
+    <string name="vjugar" >play again</string>
+    <string name="anuncio" >ad</string>
+    <string name="perdiste">You lost</string>
+    <string name="marcas" />
+</resources>

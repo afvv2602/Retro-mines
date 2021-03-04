@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RETRO MINES</string>
+    <string name="retro">RETRO</string>
+    <string name="minas">MINES</string>
+    <string name="jugar">玩</string>
+    <string name="configuracion">设置</string>
+    <string name="salir">出去</string>
+    <string name="volver">返回</string>
+    <string name="cambiarVol">一般声音</string>
+    <string name="cambiarEfe">声音特效</string>
+    <string name="cambiarMus">声音音乐</string>
+    <string name="selecciona">选择</string>
+    <string name="dificultad">困难</string>
+    <string name="principiante">初学者</string>
+    <string name="medio">中等</string>
+    <string name="experto">专家</string>
+    <string name="personalizado">重新开始</string>
+    <string name="reiniciar">重新开始</string>
+    <string name="sonidoB">声音控制</string>
+    <string name="ganado" >你赢了</string>
+    <string name="vjugar" >再玩一遍</string>
+    <string name="anuncio" >广告</string>
+    <string name="perdiste">你输了</string>
+    <string name="marcas" />
+</resources>

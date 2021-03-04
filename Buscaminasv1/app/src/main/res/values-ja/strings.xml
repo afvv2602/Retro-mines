@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RETRO MINES</string>
+    <string name="retro">RETRO</string>
+    <string name="minas">MINES</string>
+    <string name="jugar">遊ぶ</string>
+    <string name="configuracion">設定</string>
+    <string name="salir">外出する</string>
+    <string name="volver">戻る</string>
+    <string name="cambiarVol">一般的な音</string>
+    <string name="cambiarEfe">音響効果</string>
+    <string name="cambiarMus">サウンドミュージック</string>
+    <string name="selecciona">選択</string>
+    <string name="dificultad">困難</string>
+    <string name="principiante">初心者</string>
+    <string name="medio">中級</string>
+    <string name="experto">専門家</string>
+    <string name="personalizado">パーソナライズ</string>
+    <string name="reiniciar">再起動</string>
+    <string name="sonidoB">サウンドコントロール</string>
+    <string name="ganado" >あなたが勝った</string>
+    <string name="vjugar" >再びプレー</string>
+    <string name="anuncio">広告</string>
+    <string name="perdiste" >あなたが負けた</string>
+    <string name="marcas" />
+
+</resources>

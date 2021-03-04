@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!--Margenes laterales de la app-->
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/principal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/margenA"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/margenAB"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/margenDcho"
+        android:layout_width="75dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/margenIzq"
+        android:layout_width="75dp"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!--Aplicacion -->
+
+    <View
+        android:id="@+id/usable"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/margenA"
+        app:layout_constraintEnd_toStartOf="@id/margenDcho"
+        app:layout_constraintBottom_toTopOf="@id/margenAB"
+        app:layout_constraintStart_toEndOf="@+id/margenIzq"/>
+    <View
+        android:id="@+id/TV1"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        app:layout_constraintTop_toTopOf="@+id/usable"
+        app:layout_constraintEnd_toEndOf="@+id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable"
+        app:layout_constraintBottom_toTopOf="@id/TV2"/>
+
+    <TextView
+        android:id="@+id/Busca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/neonoverdrive"
+        android:text="@string/retro"
+        android:textAlignment="center"
+        android:textColor="#F5E6E8"
+        android:textSize="85sp"
+        app:layout_constraintBottom_toBottomOf="@+id/TV1"
+        app:layout_constraintEnd_toEndOf="@+id/TV1"
+        app:layout_constraintStart_toStartOf="@+id/TV1"
+        app:layout_constraintTop_toTopOf="@+id/TV1" />
+
+    <View
+        android:id="@+id/TV2"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        app:layout_constraintEnd_toEndOf="@+id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable"
+        app:layout_constraintTop_toBottomOf="@id/TV1"
+        app:layout_constraintBottom_toTopOf="@id/MargenBTNS"/>
+
+    <TextView
+        android:id="@+id/Minas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/neonoverdrive"
+        android:text="@string/minas"
+        android:textAlignment="center"
+        android:textColor="#F5E6E8"
+        android:textSize="85sp"
+        app:layout_constraintBottom_toBottomOf="@+id/TV2"
+        app:layout_constraintEnd_toEndOf="@+id/TV2"
+        app:layout_constraintStart_toStartOf="@+id/TV2"
+        app:layout_constraintTop_toTopOf="@+id/TV2" />
+
+    <View
+        android:id="@+id/MargenBTNS"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/TV2"
+        app:layout_constraintBottom_toTopOf="@+id/BTNJugar"
+        app:layout_constraintEnd_toEndOf="@+id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable"/>
+
+    <View
+        android:id="@+id/BTNJugar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toBottomOf="@+id/MargenBTNS"
+        app:layout_constraintBottom_toTopOf="@id/margenBTN1"
+        app:layout_constraintEnd_toEndOf="@+id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable"/>
+
+
+    <Button
+        android:id="@+id/jugar"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boton_rosa_ig"
+        android:fontFamily="@font/neonavy"
+        android:text="@string/jugar"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="@+id/BTNJugar"
+        app:layout_constraintEnd_toEndOf="@+id/BTNJugar"
+        app:layout_constraintStart_toStartOf="@+id/BTNJugar"
+        app:layout_constraintTop_toTopOf="@id/BTNJugar" />
+
+    <View
+        android:id="@+id/margenBTN1"
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        app:layout_constraintTop_toBottomOf="@+id/BTNJugar"
+        app:layout_constraintBottom_toTopOf="@id/BTNConfiguracion"
+        app:layout_constraintEnd_toEndOf="@+id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable" />
+
+    <View
+        android:id="@+id/BTNConfiguracion"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toBottomOf="@+id/margenBTN1"
+        app:layout_constraintBottom_toTopOf="@id/margenBTN2"
+        app:layout_constraintEnd_toEndOf="@+id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable"/>
+
+    <Button
+        android:id="@+id/configuracion"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boton_rosa_ig"
+        android:fontFamily="@font/neonavy"
+        android:text="@string/configuracion"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="@+id/BTNConfiguracion"
+        app:layout_constraintEnd_toEndOf="@+id/BTNConfiguracion"
+        app:layout_constraintStart_toStartOf="@+id/BTNConfiguracion"
+        app:layout_constraintTop_toTopOf="@id/BTNConfiguracion" />
+
+    <View
+        android:id="@+id/margenBTN2"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        app:layout_constraintTop_toBottomOf="@+id/BTNConfiguracion"
+        app:layout_constraintBottom_toTopOf="@id/BTNSalir"
+        app:layout_constraintEnd_toEndOf="@+id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable" />
+
+    <View
+        android:id="@+id/BTNSalir"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toBottomOf="@+id/margenBTN2"
+        app:layout_constraintBottom_toBottomOf="@id/usable"
+        app:layout_constraintEnd_toEndOf="@+id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable" />
+
+    <Button
+        android:id="@+id/salir"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boton_rosa_ig"
+        android:fontFamily="@font/neonavy"
+        android:text="@string/salir"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="@+id/BTNSalir"
+        app:layout_constraintEnd_toEndOf="@+id/BTNSalir"
+        app:layout_constraintStart_toStartOf="@+id/BTNSalir"
+        app:layout_constraintTop_toTopOf="@id/BTNSalir" />
+
+    <View
+        android:id="@+id/pop"
+        android:layout_width="370dp"
+        android:layout_height="350dp"
+        android:foregroundGravity="center"
+        app:layout_constraintTop_toTopOf="@id/usable"
+        app:layout_constraintEnd_toEndOf="@id/usable"
+        app:layout_constraintBottom_toBottomOf="@id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable"/>
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

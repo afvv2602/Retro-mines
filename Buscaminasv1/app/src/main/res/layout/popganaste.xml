@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:layout_width="380dp"
+    android:layout_height="200dp"
+    android:background="@drawable/boton_morado_ig">
+
+    <View
+        android:id="@+id/usable"
+        android:layout_width="380dp"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toTopOf="@id/layout"
+        app:layout_constraintEnd_toEndOf="@id/layout"
+        app:layout_constraintBottom_toBottomOf="@id/layout"
+        app:layout_constraintStart_toStartOf="@id/layout"/>
+
+    <View
+        android:id="@+id/ganaste"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/usable"
+        app:layout_constraintBottom_toTopOf="@+id/menu"
+        app:layout_constraintEnd_toEndOf="@id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable"
+        />
+
+
+    <TextView
+        android:id="@+id/ganasteTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/neonoverdrive"
+        android:textAlignment="center"
+        android:text="@string/ganado"
+        android:textSize="35sp"
+        app:layout_constraintTop_toTopOf="@id/ganaste"
+        app:layout_constraintEnd_toEndOf="@id/ganaste"
+        app:layout_constraintStart_toStartOf="@id/ganaste"
+        app:layout_constraintBottom_toBottomOf="@id/ganaste" />
+
+    <View
+        android:id="@+id/menu"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/ganaste"
+        app:layout_constraintEnd_toEndOf="@id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable"
+        app:layout_constraintBottom_toBottomOf="@id/usable"/>
+
+    <Button
+        android:id="@+id/jugar"
+        android:layout_width="93dp"
+        android:layout_height="51dp"
+        android:background="@drawable/boton_rosa_ig"
+        android:fontFamily="@font/neonavy"
+        android:text="@string/vjugar"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.759" />
+
+    <Button
+        android:id="@+id/siguiente"
+        android:layout_width="93dp"
+        android:layout_height="51dp"
+        android:background="@drawable/boton_rosa_ig"
+        android:fontFamily="@font/neonavy"
+        android:text="++"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.759" />
+
+    <Button
+        android:id="@+id/salir"
+        android:layout_width="93dp"
+        android:layout_height="51dp"
+        android:background="@drawable/boton_rosa_ig"
+        android:fontFamily="@font/neonavy"
+        android:text="@string/salir"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.879"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.759" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

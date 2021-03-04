@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RETRO MINES</string>
+    <string name="retro">RETRO</string>
+    <string name="minas">MINES</string>
+    <string name="jugar">놀다</string>
+    <string name="configuracion">환경</string>
+    <string name="salir">나가</string>
+    <string name="volver">반환</string>
+    <string name="cambiarVol">일반적인 소리</string>
+    <string name="cambiarEfe">음향 효과</string>
+    <string name="cambiarMus">음악 소리</string>
+    <string name="selecciona">고르다</string>
+    <string name="dificultad">어려움</string>
+    <string name="principiante">초보자</string>
+    <string name="medio">중급</string>
+    <string name="experto">전문가</string>
+    <string name="personalizado">개인화</string>
+    <string name="reiniciar">재시작</string>
+    <string name="sonidoB">사운드 컨트롤</string>
+    <string name="ganado" >당신은 이겼습니다</string>
+    <string name="vjugar" >다시 플레이</string>
+    <string name="anuncio">기원 후</string>
+    <string name="perdiste">졌다</string>
+    <string name="marcas" />
+</resources>

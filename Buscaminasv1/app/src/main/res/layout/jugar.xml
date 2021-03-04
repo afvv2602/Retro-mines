@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View
+        android:background="@drawable/pasillo_neon"
+        android:id="@+id/principal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <View
+        android:id="@+id/margenA"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/margenAB"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/margenDcho"
+        android:layout_width="75dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/margenIzq"
+        android:layout_width="75dp"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/usable"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/margenA"
+        app:layout_constraintEnd_toStartOf="@id/margenDcho"
+        app:layout_constraintStart_toEndOf="@id/margenIzq"
+        app:layout_constraintBottom_toTopOf="@id/margenAB"/>
+
+    <View
+        android:id="@+id/TV1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/margenA"
+        app:layout_constraintEnd_toEndOf="@+id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable"
+        app:layout_constraintBottom_toTopOf="@+id/TV2"/>
+
+    <TextView
+        android:id="@+id/Selecciona"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/neonoverdrive"
+        android:text="@string/selecciona"
+        android:textColor="#FFFFFF"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="@+id/TV1"
+        app:layout_constraintEnd_toEndOf="@+id/TV1"
+        app:layout_constraintStart_toStartOf="@+id/TV1"
+        app:layout_constraintTop_toTopOf="@+id/TV1" />
+    <View
+        android:id="@+id/TV2"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="@+id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable"
+        app:layout_constraintTop_toBottomOf="@id/TV1"
+        app:layout_constraintBottom_toTopOf="@id/MargenBTNS"/>
+
+    <TextView
+        android:id="@+id/Dificultad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/neonoverdrive"
+        android:text="@string/dificultad"
+        android:textAlignment="center"
+        android:textColor="#F5E6E8"
+        android:textSize="63sp"
+        app:layout_constraintBottom_toBottomOf="@+id/TV2"
+        app:layout_constraintEnd_toEndOf="@+id/TV2"
+        app:layout_constraintStart_toStartOf="@+id/TV2"
+        app:layout_constraintTop_toTopOf="@+id/TV2" />
+
+    <View
+        android:id="@+id/MargenBTNS"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/BTNPrincipiante"
+        app:layout_constraintEnd_toEndOf="@+id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable"
+        app:layout_constraintTop_toBottomOf="@+id/TV2" />
+    <View
+        android:id="@+id/BTNPrincipiante"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toBottomOf="@+id/MargenBTNS"
+        app:layout_constraintBottom_toTopOf="@id/margenBTN1"
+        app:layout_constraintEnd_toEndOf="@+id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable"/>
+
+
+    <Button
+        android:id="@+id/principiante"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boton_verde_ig"
+        android:fontFamily="@font/neonavy"
+        android:text="@string/principiante"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="@+id/BTNPrincipiante"
+        app:layout_constraintEnd_toEndOf="@+id/BTNPrincipiante"
+        app:layout_constraintStart_toStartOf="@+id/BTNPrincipiante"
+        app:layout_constraintTop_toTopOf="@id/BTNPrincipiante" />
+    <View
+        android:id="@+id/margenBTN1"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/BTNPrincipiante"
+        app:layout_constraintBottom_toTopOf="@id/BTNMedio"
+        app:layout_constraintEnd_toEndOf="@+id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable" />
+    <View
+        android:id="@+id/BTNMedio"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toBottomOf="@+id/margenBTN1"
+        app:layout_constraintBottom_toTopOf="@id/margenBTN2"
+        app:layout_constraintEnd_toEndOf="@+id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable"/>
+
+
+    <Button
+        android:id="@+id/medio"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boton_naranja_ig"
+        android:fontFamily="@font/neonavy"
+        android:text="@string/medio"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="@+id/BTNMedio"
+        app:layout_constraintEnd_toEndOf="@+id/BTNMedio"
+        app:layout_constraintStart_toStartOf="@+id/BTNMedio"
+        app:layout_constraintTop_toTopOf="@id/BTNMedio" />
+
+    <View
+        android:id="@+id/margenBTN2"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/BTNMedio"
+        app:layout_constraintBottom_toTopOf="@id/BTNExperto"
+        app:layout_constraintStart_toEndOf="@id/margenIzq"
+        app:layout_constraintEnd_toStartOf="@id/margenDcho" />
+
+    <View
+        android:id="@+id/BTNExperto"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toBottomOf="@+id/margenBTN2"
+        app:layout_constraintBottom_toTopOf="@id/margenBTN3"
+        app:layout_constraintEnd_toEndOf="@+id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable"/>
+
+    <Button
+        android:id="@+id/experto"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boton_rojo_ig"
+        android:fontFamily="@font/neonavy"
+        android:text="@string/experto"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="@+id/BTNExperto"
+        app:layout_constraintEnd_toEndOf="@+id/BTNExperto"
+        app:layout_constraintStart_toStartOf="@+id/BTNExperto"
+        app:layout_constraintTop_toTopOf="@id/BTNExperto" />
+
+    <View
+        android:id="@+id/margenBTN3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/BTNExperto"
+        app:layout_constraintEnd_toEndOf="@+id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable"
+        app:layout_constraintBottom_toTopOf="@id/BTNMarcas"/>
+
+    <View
+        android:id="@+id/BTNMarcas"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/margenBTN3"
+        app:layout_constraintEnd_toEndOf="@+id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable"
+        app:layout_constraintBottom_toTopOf="@id/margenBTNAB"/>
+
+    <View
+        android:id="@+id/margenBTNAB"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/BTNMarcas"
+        app:layout_constraintEnd_toEndOf="@+id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable"
+        app:layout_constraintBottom_toTopOf="@id/botones"/>
+    <View
+        android:id="@id/botones"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/margenBTNAB"
+        app:layout_constraintBottom_toBottomOf="@id/usable"
+        app:layout_constraintEnd_toEndOf="@+id/usable"
+        app:layout_constraintStart_toStartOf="@id/usable"/>
+    <View
+        android:id="@id/reiniciar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/botones"
+        app:layout_constraintStart_toStartOf="@id/botones"
+        app:layout_constraintEnd_toStartOf="@id/salir"
+        app:layout_constraintBottom_toBottomOf="@id/botones"/>
+    <Button
+        android:id="@+id/BTNVolver"
+        android:text="@string/volver"
+        android:fontFamily="@font/neonoverdrive"
+        android:background="@drawable/boton_rosa_ig"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toTopOf="@id/reiniciar"
+        app:layout_constraintEnd_toEndOf="@id/reiniciar"
+        app:layout_constraintBottom_toBottomOf="@id/reiniciar"
+        app:layout_constraintStart_toStartOf="@id/reiniciar" />
+    <View
+        android:id="@id/salir"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/botones"
+        app:layout_constraintStart_toEndOf="@id/reiniciar"
+        app:layout_constraintBottom_toBottomOf="@id/botones"
+        app:layout_constraintEnd_toEndOf="@id/botones"/>
+    <Button
+        android:id="@id/BTNSalir"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/neonoverdrive"
+        android:background="@drawable/boton_rosa_ig"
+        android:text="@string/salir"
+        app:layout_constraintTop_toTopOf="@id/salir"
+        app:layout_constraintEnd_toEndOf="@id/salir"
+        app:layout_constraintBottom_toBottomOf="@id/salir"
+        app:layout_constraintStart_toStartOf="@id/salir" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
