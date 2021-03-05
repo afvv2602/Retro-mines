@@ -6,22 +6,17 @@ public class Menus extends Thread {
 
     View menuA;
     View menuAB;
-    View menuIzq;
-    View menuDcho;
 
-    public Menus(View menuA, View menuAB,View menuIzq,View menuDcho) {
+    public Menus(View menuA, View menuAB) {
         this.menuA = menuA;
         this.menuAB = menuAB;
-        this.menuIzq = menuIzq;
-        this.menuDcho = menuDcho;
     }
-
 
     @Override
     public void run() {
         super.run();
-        try{
-            while(true) {
+        try {
+            while (true) {
                 menuA.setBackgroundResource(R.drawable.menurosa);
                 menuAB.setBackgroundResource(R.drawable.menurosa);
                 sleep(2000);
@@ -53,7 +48,7 @@ public class Menus extends Thread {
                 menuAB.setBackgroundResource(R.drawable.menulila);
                 sleep(2000);
             }
-        }catch(InterruptedException e){
+        } catch (InterruptedException e) {
 
         }
     }

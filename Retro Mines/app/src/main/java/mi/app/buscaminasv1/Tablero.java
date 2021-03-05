@@ -9,7 +9,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.media.AudioManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,24 +22,22 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import hallianinc.opensource.timecounter.StopWatch;
-
 import static mi.app.buscaminasv1.MainActivity.musica;
 
 public class Tablero extends AppCompatActivity {
 
     static AudioManager audioManager;
-    private static final String TAG ="" ;
     static Lienzo fondo;
-    static Button reiniciar,salir,sonido,bandera;
+    static Button reiniciar, salir, sonido, bandera;
     static StopWatch stopwatch;
-    static TextView cronometro,mejorCrono;
+    static TextView cronometro, mejorCrono;
     static Thread colores;
-    static View menuAB,menuA,menuDcho,menuIzq;
+    static View menuAB, menuA;
     static TextView contadorBombasTV;
     static RelativeLayout layoutJuego;
     static String nivel;
-    static boolean swJuego,swCronometro,swAnuncio,swAnuncioCrono,swBanderas,swMinas,swReanudar;
-    static int tiempo,contadorMin,contadorBanderas,columnas,filas;
+    static boolean swJuego, swCronometro, swAnuncio, swAnuncioCrono, swBanderas, swMinas, swReanudar;
+    static int tiempo, contadorMin, contadorBanderas, columnas, filas;
     //Arrays para el funcionamiento del juego
     private static Button[][] buttons;
     private static int[][] tablero;
@@ -58,15 +55,15 @@ public class Tablero extends AppCompatActivity {
         String btnPulsado = getIntent().getStringExtra("juego");
         switch (btnPulsado) {
             case "principiante":
-                String principiante = preferences.getString("principiante","59:59:0");
+                String principiante = preferences.getString("principiante", "59:59:0");
                 nivel = "principiante";
                 mejorCrono.setText(principiante);
-                filas = 2;
-                columnas = 2;
-                minas = 1;
+                filas = 8;
+                columnas = 8;
+                minas = 10;
                 break;
             case "medio":
-                String medio = preferences.getString("medio","59:59:0");
+                String medio = preferences.getString("medio", "59:59:0");
                 nivel = "medio";
                 mejorCrono.setText(medio);
                 filas = 14;
@@ -74,7 +71,7 @@ public class Tablero extends AppCompatActivity {
                 minas = 30;
                 break;
             case "experto":
-                String experto = preferences.getString("experto","59:59:0");
+                String experto = preferences.getString("experto", "59:59:0");
                 nivel = "experto";
                 mejorCrono.setText(experto);
                 filas = 18;
@@ -100,7 +97,7 @@ public class Tablero extends AppCompatActivity {
     }
 
     private void configurarMusica() {
-        MainActivity.musica.stopAndChange(this,MainActivity.musica.getIndex());
+        MainActivity.musica.stopAndChange(this, MainActivity.musica.getIndex());
     }
 
     private void generarAccionesBotones() {
@@ -133,24 +130,24 @@ public class Tablero extends AppCompatActivity {
         bandera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(swBanderas){
+                if (swBanderas) {
                     bandera.setBackgroundResource(R.drawable.boton_rojo_ig);
-                    for(int i = 0 ; i<filas;i++){
-                        for(int j = 0; j<columnas;j++){
-                            if(banderas[i][j]==10){
+                    for (int i = 0; i < filas; i++) {
+                        for (int j = 0; j < columnas; j++) {
+                            if (banderas[i][j] == 10) {
                                 buttons[i][j].setOnClickListener(null);
-                            }else {
+                            } else {
                                 buttons[i][j].setOnClickListener(comprobarClick);
                             }
                         }
                     }
-                    swBanderas=false;
+                    swBanderas = false;
 
-                }else{
+                } else {
                     bandera.setBackgroundResource(R.drawable.boton_azul_ig);
-                    swBanderas=true;
-                    for(int i = 0 ; i<filas;i++){
-                        for(int j = 0; j<columnas;j++){
+                    swBanderas = true;
+                    for (int i = 0; i < filas; i++) {
+                        for (int j = 0; j < columnas; j++) {
                             buttons[i][j].setOnClickListener(clickBanderas);
                         }
                     }
@@ -159,12 +156,10 @@ public class Tablero extends AppCompatActivity {
         });
     }
 
-    private void generarRecursos(){
+    private void generarRecursos() {
         //Cogemos las views de los menus
         menuA = findViewById(R.id.menuA);
         menuAB = findViewById(R.id.menuAB);
-        menuIzq = findViewById(R.id.Tableroizq);
-        menuDcho = findViewById(R.id.Tablerodcha);
 
         //Contador de bombas
         contadorBombasTV = findViewById(R.id.contadorbombs);
@@ -178,7 +173,7 @@ public class Tablero extends AppCompatActivity {
         swCronometro = true;
 
         //Boolean del anuncio
-        swAnuncio=true;
+        swAnuncio = true;
         swAnuncioCrono = true;
 
         //set de todos los arrays
@@ -188,7 +183,7 @@ public class Tablero extends AppCompatActivity {
         banderas = new int[filas][columnas];
 
         //Cambio de colores de los menus
-        colores = new Menus(menuA,menuAB,menuIzq,menuDcho);
+        colores = new Menus(menuA, menuAB);
         colores.start();
 
         //Creacion del lienzo
@@ -198,28 +193,12 @@ public class Tablero extends AppCompatActivity {
         swJuego = true;
 
         //Menu de abajo
-        reiniciar  = findViewById(R.id.BTNReiniciar);
+        reiniciar = findViewById(R.id.BTNReiniciar);
         salir = findViewById(R.id.BTNSalir);
         sonido = findViewById(R.id.BTNSonido);
         bandera = findViewById(R.id.BTNBanderas);
         swBanderas = false;
         swReanudar = true;
-
-    }
-
-    private static void mostrarArray() {
-        String tableroV = "      Buscaminas \n";
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                int valorA = tablero[i][j];
-                if (j == filas - 1) {
-                    tableroV += "[" + valorA + "] \n";
-                } else {
-                    tableroV += "[" + valorA + "]";
-                }
-            }
-        }
-        System.out.println(tableroV);
     }
 
     private void controladorJuego() {
@@ -875,7 +854,6 @@ public class Tablero extends AppCompatActivity {
         RelativeLayout layout1 = (RelativeLayout) findViewById(R.id.pintar);
         int ancho = view.getWidth();
         int alto = view.getHeight();
-        Log.d(TAG, "generarBotones: "+ancho+" "+alto);
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
                 final Button boton = new Button(this);
@@ -938,7 +916,7 @@ public class Tablero extends AppCompatActivity {
                     boton.setBackgroundResource(R.drawable.bandera);
                     revisarGanador(v);
                     return true;
-                }else if (banderas[fila][columna] == 10) {
+                } else if (banderas[fila][columna] == 10) {
                     contadorMin++;
                     contadorBanderas++;
                     revisarMinas();
@@ -972,9 +950,9 @@ public class Tablero extends AppCompatActivity {
     };
 
     private void revisarMinas() {
-        if(contadorBanderas==0){
+        if (contadorBanderas == 0) {
             swMinas = false;
-        }else {
+        } else {
             swMinas = true;
         }
     }
@@ -997,27 +975,27 @@ public class Tablero extends AppCompatActivity {
 
     private void registrarTiempoyPuntos() {
         int time = stopwatch.getTime();
-        String tiempo = ""+time;
-        String ms = tiempo.substring(tiempo.length()-1);
-        String s = tiempo.substring(0,tiempo.length()-1);
+        String tiempo = "" + time;
+        String ms = tiempo.substring(tiempo.length() - 1);
+        String s = tiempo.substring(0, tiempo.length() - 1);
         int segundos = Integer.parseInt(s);
         int minutos = 0;
-        while(true){
-            if(segundos>60){
-                segundos = segundos-60;
+        while (true) {
+            if (segundos > 60) {
+                segundos = segundos - 60;
                 minutos++;
-            }else{
+            } else {
                 break;
             }
         }
-        tiempo = ""+minutos+":"+segundos+":"+ms;
+        tiempo = "" + minutos + ":" + segundos + ":" + ms;
         compararMarcas(tiempo);
     }
 
-    private void compararMarcas(String tiempo){
+    private void compararMarcas(String tiempo) {
         SharedPreferences preferences = getSharedPreferences("marcas", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor= preferences.edit();
-        String tiempoGuardado = preferences.getString(nivel,"59:59:0");
+        SharedPreferences.Editor editor = preferences.edit();
+        String tiempoGuardado = preferences.getString(nivel, "59:59:0");
         String tiempoAct[] = tiempo.split(":");
         String tiempoGua[] = tiempoGuardado.split(":");
         int minAct = Integer.parseInt(tiempoAct[0]);
@@ -1026,17 +1004,17 @@ public class Tablero extends AppCompatActivity {
         int minGua = Integer.parseInt(tiempoGua[0]);
         int segGua = Integer.parseInt(tiempoGua[1]);
         int milGua = Integer.parseInt(tiempoGua[2]);
-        if(minAct<minGua){
+        if (minAct < minGua) {
             //Guardamos la nueva mejor marca
-            editor.putString(""+nivel,tiempo);
+            editor.putString("" + nivel, tiempo);
             editor.commit();
-        }else if (minAct == minGua){
-            if(segAct<segGua){
-                editor.putString(""+nivel,tiempo);
+        } else if (minAct == minGua) {
+            if (segAct < segGua) {
+                editor.putString("" + nivel, tiempo);
                 editor.commit();
-            }else if (segAct == segGua){
-                if(milAct<milGua){
-                    editor.putString(""+nivel,tiempo);
+            } else if (segAct == segGua) {
+                if (milAct < milGua) {
+                    editor.putString("" + nivel, tiempo);
                     editor.commit();
                 }
             }
@@ -1056,7 +1034,7 @@ public class Tablero extends AppCompatActivity {
         final Button salir = popupView.findViewById(R.id.salir);
         final Button anuncio = popupView.findViewById(R.id.anuncio);
         final Button bombaBTN = (Button) view;
-        if(!swAnuncio){
+        if (!swAnuncio) {
             anuncio.setBackgroundResource(R.drawable.boton_rojo_ig);
             anuncio.setVisibility(View.INVISIBLE);
         }
@@ -1083,15 +1061,15 @@ public class Tablero extends AppCompatActivity {
         anuncio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(swAnuncio && contadorMin!=1){
-                swJuego = true;
-                quitarBomba(bombaBTN);
-                popupWindow.dismiss();
-                swAnuncio = false;
-            }else if(contadorMin==1){
-                popupWindow.dismiss();
-                registrarTiempoyPuntos();
-                popGanaste(bombaBTN);
+                if (swAnuncio && contadorMin != 1) {
+                    swJuego = true;
+                    quitarBomba(bombaBTN);
+                    popupWindow.dismiss();
+                    swAnuncio = false;
+                } else if (contadorMin == 1) {
+                    popupWindow.dismiss();
+                    registrarTiempoyPuntos();
+                    popGanaste(bombaBTN);
                 }
             }
         });
@@ -1164,7 +1142,7 @@ public class Tablero extends AppCompatActivity {
         int height = view.getHeight();
         final PopupWindow popupWindow = new PopupWindow(popupView, width, height);
         SharedPreferences preferences = getSharedPreferences("musica", Context.MODE_PRIVATE);
-        String playlist = preferences.getString("playlistAct","KlowBeats");
+        String playlist = preferences.getString("playlistAct", "KlowBeats");
         TextView playlistTV = popupView.findViewById(R.id.textoPlaylistTV);
         playlistTV.setText(playlist);
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
@@ -1173,7 +1151,9 @@ public class Tablero extends AppCompatActivity {
         final Button siguiente = popupView.findViewById(R.id.siguiente);
         final Button salir = popupView.findViewById(R.id.BTNSalir);
         final SeekBar barra = popupView.findViewById(R.id.barra_sonido);
-
+        if(musica.getEstado()){
+            reanudar.setBackgroundResource(R.drawable.pausa);
+        }
         //Barra sonido
         try {
             audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
@@ -1205,18 +1185,7 @@ public class Tablero extends AppCompatActivity {
         reanudar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences preferences = getSharedPreferences("musica", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor= preferences.edit();
-                boolean PSBtn = preferences.getBoolean("estado",false);
-                if(PSBtn){
-                    reanudar.setBackgroundResource(R.drawable.pausa);
-                    editor.putBoolean("estado",false);
-                    musica.reanudarParar();
-                }else{
-                    reanudar.setBackgroundResource(R.drawable.play);
-                    editor.putBoolean("estado",true);
-                    musica.reanudarParar();
-                }
+                musica.reanudarParar(reanudar);
             }
         });
         siguiente.setOnClickListener(new View.OnClickListener() {
@@ -1241,7 +1210,7 @@ public class Tablero extends AppCompatActivity {
         String col = partes[1];
         int fila = Integer.parseInt(fil);
         int columna = Integer.parseInt(col);
-        banderas[fila][columna]=10;
+        banderas[fila][columna] = 10;
         contadorBanderas--;
         contadorMin--;
         contadorBombasTV.setText("" + contadorMin);
@@ -1254,7 +1223,7 @@ public class Tablero extends AppCompatActivity {
                 stopwatch.start();
                 swCronometro = false;
             }
-            if(swAnuncio == false && swAnuncioCrono) {
+            if (swAnuncio == false && swAnuncioCrono) {
                 stopwatch.resume();
                 swAnuncioCrono = false;
             }
@@ -1280,7 +1249,8 @@ public class Tablero extends AppCompatActivity {
                 revisar();
                 expandir(fila, columna);
             }
-    }};
+        }
+    };
 
     private View.OnClickListener clickBanderas = new View.OnClickListener() {
         @Override
@@ -1306,7 +1276,7 @@ public class Tablero extends AppCompatActivity {
                     banderas[fila][columna] = 10;
                     boton.setBackgroundResource(R.drawable.bandera);
                     revisarGanador(v);
-                }else if(banderas[fila][columna] == 10){
+                } else if (banderas[fila][columna] == 10) {
                     contadorMin++;
                     contadorBanderas++;
                     revisarMinas();
@@ -1335,11 +1305,6 @@ public class Tablero extends AppCompatActivity {
             }
         }
     };
-
-    private void pararJuego()  {
-        tiempo = stopwatch.getTime();
-        colores.interrupt();
-    }
 
     private void revisar() {
         for (int i = 0; i < tablero.length; i++) {
@@ -1464,7 +1429,7 @@ public class Tablero extends AppCompatActivity {
             return 0;
         }
     }
-    
+
     //Full screen mode
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -1490,21 +1455,37 @@ public class Tablero extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
+
+    //Pruebas
+    private static void mostrarArray() {
+        String tableroV = "      Buscaminas \n";
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                int valorA = tablero[i][j];
+                if (j == filas - 1) {
+                    tableroV += "[" + valorA + "] \n";
+                } else {
+                    tableroV += "[" + valorA + "]";
+                }
+            }
+        }
+        System.out.println(tableroV);
+    }
 }
 
 class Lienzo extends View {
 
-    static int filas ;
+    static int filas;
     static int columnas;
 
-    public Lienzo(Context context,int filas,int columnas) {
+    public Lienzo(Context context, int filas, int columnas) {
         super(context);
         this.filas = filas;
         this.columnas = columnas;
     }
 
     protected void onDraw(Canvas canvas) {
-        canvas.drawRGB(0,0 ,0 );
+        canvas.drawRGB(0, 0, 0);
         int ancho = canvas.getWidth();
         int alto = canvas.getHeight();
 
@@ -1529,7 +1510,7 @@ class Lienzo extends View {
         //pintamos las celdas
         tablero.setStrokeWidth(0);
         for (int i = 0; i < columnas; i++) { //verticales
-            canvas.drawLine(ancho / filas * i, 0, ancho/ filas *i, alto, tablero); //linea
+            canvas.drawLine(ancho / filas * i, 0, ancho / filas * i, alto, tablero); //linea
         }
 
         for (int i = 0; i < filas; i++) { //horizontales

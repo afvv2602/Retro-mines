@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+        <item
+            android:id="@+id/Principiante"
+            android:title="@string/principiante">
+        </item>
+        <item
+            android:id="@+id/Medio"
+            android:title="@string/medio">
+        </item>
+        <item
+            android:id="@+id/Pro"
+            android:title="@string/experto">
+        </item>
+</menu>

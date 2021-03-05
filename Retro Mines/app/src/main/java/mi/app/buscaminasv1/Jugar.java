@@ -63,11 +63,11 @@ public class Jugar extends AppCompatActivity {
         salir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MainActivity.musica.parar();
                 finish();
+
             }
         });
-
-
     }
 
 

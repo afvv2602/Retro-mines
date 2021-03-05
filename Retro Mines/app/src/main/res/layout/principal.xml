@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <!--Margenes laterales de la app-->
     <View
         android:id="@+id/view"
@@ -48,6 +49,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <View
+        android:id="@+id/menusitoPOP"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/margenA"
+        app:layout_constraintBottom_toTopOf="@+id/usable"
+        app:layout_constraintStart_toEndOf="@+id/margenIzq"
+        app:layout_constraintEnd_toStartOf="@id/margenDcho"
+    />
+    <Button
+        android:foregroundGravity="left"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/cerrar"
+        app:layout_constraintBottom_toBottomOf="@id/menusitoPOP"
+        app:layout_constraintStart_toStartOf="@id/menusitoPOP"
+        app:layout_constraintEnd_toEndOf="@+id/menusitoPOP"
+        app:layout_constraintTop_toTopOf="@id/menusitoPOP"
+        android:onClick="showPopup" />
     <!--Aplicacion -->
 
     <View

@@ -1,10 +1,7 @@
 package mi.app.buscaminasv1;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -12,8 +9,10 @@ import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.PopupWindow;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -23,14 +22,15 @@ import static mi.app.buscaminasv1.Tablero.audioManager;
 public class MainActivity extends AppCompatActivity {
     static Musica musica = null;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.principal);
-        if(musica!=null){
-            musica.stopAndChange(this,musica.getIndex());
-        }else{
+        if (musica != null) {
+            musica.stopAndChange(this, musica.getIndex());
+        } else {
             musica = new Musica(this);
         }
         Button salir = findViewById(R.id.salir);
@@ -55,10 +55,42 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+                musica.parar();
             }
         });
     }
 
+
+    public void showPopup(View boton) {
+        PopupMenu popup = new PopupMenu(this, boton);
+        popup.getMenuInflater().inflate(R.menu.menu, popup.getMenu());
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.Principiante:
+                        Intent comunicacion = new Intent(getApplicationContext(), Tablero.class);
+                        comunicacion.putExtra("juego", "principiante");
+                        startActivity(comunicacion);
+                        finish();
+                        return true;
+                    case R.id.Medio:
+                        Intent com = new Intent(getApplicationContext(), Tablero.class);
+                        com.putExtra("juego", "medio");
+                        startActivity(com);
+                        finish();
+                        return true;
+                    case R.id.Pro:
+                        Intent c = new Intent(getApplicationContext(), Tablero.class);
+                        c.putExtra("juego", "experto");
+                        startActivity(c);
+                        finish();
+                        return true;
+                }
+                return false;
+            }
+        });
+        popup.show();
+    }
 
     private void popSonido(View view) {
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -76,7 +108,9 @@ public class MainActivity extends AppCompatActivity {
         final Button siguiente = popupView.findViewById(R.id.siguiente);
         final Button salir = popupView.findViewById(R.id.BTNSalir);
         final SeekBar barra = popupView.findViewById(R.id.barra_sonido);
-
+        if(musica.getEstado()){
+            reanudar.setBackgroundResource(R.drawable.pausa);
+        }
         //Barra sonido
         try {
             audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
@@ -108,18 +142,7 @@ public class MainActivity extends AppCompatActivity {
         reanudar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences preferences = getSharedPreferences("musica", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                boolean PSBtn = preferences.getBoolean("estado", false);
-                if (PSBtn) {
-                    reanudar.setBackgroundResource(R.drawable.pausa);
-                    editor.putBoolean("estado", false);
-                } else {
-                    reanudar.setBackgroundResource(R.drawable.play);
-                    editor.putBoolean("estado", true);
-                }
-                musica.reanudarParar();
-
+                musica.reanudarParar(reanudar);
             }
         });
         siguiente.setOnClickListener(new View.OnClickListener() {
@@ -171,4 +194,5 @@ public class MainActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
+
 }
